@@ -1,9 +1,17 @@
+package arezzo;
+
+import arezzo.modeles.Arezzo;
+import arezzo.vues.VuePremier;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 import partition.*;
+
+import java.io.IOException;
 
 public class Main extends Application {
 
@@ -11,9 +19,16 @@ public class Main extends Application {
     public void start(Stage stage) throws Exception {
         BorderPane pane = new BorderPane();
         FXMLLoader loader = new FXMLLoader();
+        Arezzo arezzo = new Arezzo();
+
+        loader.setLocation(getClass().getResource("vues/vuepremier.fxml"));
+
+        loader.setControllerFactory(iC -> new VuePremier(arezzo));
+        pane.setCenter(loader.load());
+
 
         Scene scene = new Scene(pane, 500, 500);
-        stage.setTitle("Oui");
+        stage.setTitle("Arezzo");
         stage.setScene(scene);
         stage.show();
     }

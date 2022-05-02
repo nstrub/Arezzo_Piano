@@ -13,8 +13,10 @@ public class VuePremier {
     public VuePremier(Arezzo ar){
         arezzo = ar;
     }
+
     @FXML
     void ajouter(){
-        arezzo.getPartition().setMelodie("C");
+        //arezzo.getPartition().setMelodie("C");
+        System.out.println("Bouton appuyer");
     }
 }
