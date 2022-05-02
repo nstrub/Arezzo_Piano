@@ -2,6 +2,7 @@ package arezzo;
 
 import arezzo.modeles.Arezzo;
 import arezzo.vues.VueClavier;
+import arezzo.vues.VueMenu;
 import arezzo.vues.VuePremier;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -30,6 +31,8 @@ public class Main extends Application {
         loader.setLocation((getClass().getResource("vues/vueclavier.fxml")));
         loader.setControllerFactory(ic -> new VueClavier(arezzo));
         pane.setBottom(loader.load());
+
+        pane.setTop(new VueMenu());
 
         Scene scene = new Scene(pane, 500, 500);
         stage.setTitle("Arezzo");
