@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="arezzo.vues.VueClavier">
+   <children>
+      <Button fx:id="C" mnemonicParsing="false" onAction="#jouer" text="Do" />
+      <Button fx:id="D" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#jouer" text="Ré" />
+      <Button fx:id="E" layoutX="46.0" layoutY="10.0" mnemonicParsing="false" onAction="#jouer" text="Mi" />
+      <Button fx:id="F" layoutX="82.0" layoutY="10.0" mnemonicParsing="false" onAction="#jouer" text="Fa" />
+      <Button fx:id="G" layoutX="118.0" layoutY="10.0" mnemonicParsing="false" onAction="#jouer" text="Sol" />
+      <Button fx:id="A" layoutX="154.0" layoutY="10.0" mnemonicParsing="false" onAction="#jouer" text="La" />
+      <Button fx:id="B" layoutX="187.0" layoutY="10.0" mnemonicParsing="false" onAction="#jouer" text="Si" />
+   </children>
+</HBox>
