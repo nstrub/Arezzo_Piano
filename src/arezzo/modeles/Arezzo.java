@@ -1,5 +1,7 @@
 package arezzo.modeles;
 
+import javafx.scene.image.Image;
+import partition.Melodie;
 import partition.Partition;
 
 import javax.sound.midi.MidiSystem;
@@ -29,6 +31,18 @@ public class Arezzo {
 
     public Partition getPartition(){
         return parti;
+    }
+
+
+    public Boolean isMelodieVide(){
+        if(notes.length() == 0){
+            return true;
+        }
+        return false;
+    }
+
+    public Image getImage(){
+        return parti.getImage();
     }
 
     public void setMelodie(String note){

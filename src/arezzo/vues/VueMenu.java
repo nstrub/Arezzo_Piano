@@ -16,6 +16,7 @@ public class VueMenu extends MenuBar {
         quitter = new javafx.scene.control.MenuItem("quit");
         quitter.setOnAction(actionEvent -> {
             Platform.exit();
+            System.exit(0);
         });
         menu.getItems().add(quitter);
         this.getMenus().add(menu);
