@@ -30,11 +30,11 @@ public class Main extends Application {
         loader = new FXMLLoader();
         loader.setLocation((getClass().getResource("vues/vueclavier.fxml")));
         loader.setControllerFactory(ic -> new VueClavier(arezzo));
-        pane.setBottom(loader.load());
+        pane.setCenter(loader.load());
 
         pane.setTop(new VueMenu());
 
-        Scene scene = new Scene(pane, 500, 500);
+        Scene scene = new Scene(pane, 1000, 700);
         stage.setTitle("Arezzo");
         stage.setScene(scene);
         stage.show();
