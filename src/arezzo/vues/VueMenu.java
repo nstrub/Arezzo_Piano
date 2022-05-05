@@ -1,24 +1,23 @@
 package arezzo.vues;
 
 import javafx.application.Platform;
+import javafx.fxml.FXML;
 import javafx.scene.control.MenuBar;
 
 import java.awt.*;
+import java.awt.event.ActionEvent;
 
 public class VueMenu extends MenuBar {
     private javafx.scene.control.Menu menu;
-    private javafx.scene.control.MenuItem quitter;
+    @FXML
+    private javafx.scene.control.MenuItem fermer;
 
-    public VueMenu(){
+    public VueMenu() {
 
-        //Menu : quitter
-        menu = new javafx.scene.control.Menu("Menu");
-        quitter = new javafx.scene.control.MenuItem("quit");
-        quitter.setOnAction(actionEvent -> {
-            Platform.exit();
-            System.exit(0);
-        });
-        menu.getItems().add(quitter);
-        this.getMenus().add(menu);
+    }
+
+    public void quitter(javafx.event.ActionEvent actionEvent) {
+        Platform.exit();
+        System.exit(0);
     }
 }

@@ -27,27 +27,25 @@ public class Main extends Application {
         FXMLLoader loader = new FXMLLoader();
         Arezzo arezzo = new Arezzo();
 
-        grid.setGridLinesVisible(true);
-        grid.setMaxWidth(1000);
-        grid.setMaxHeight(700);
-        grid.setMinWidth(1000);
-        grid.setMinHeight(700);
-        grid.setPadding(new Insets(0, 30, 30, 30));
+        VueMenu vueMenu = new VueMenu();
+        VuePartition vuePartition = new VuePartition(arezzo);
+        VueClavier vueClavier = new VueClavier(arezzo);
 
+        loader.setLocation(getClass().getResource("root.fxml"));
 
-        loader = new FXMLLoader();
-        loader.setLocation((getClass().getResource("vues/vueclavier.fxml")));
-        loader.setControllerFactory(ic -> new VueClavier(arezzo));
-        grid.add(loader.load(), 0,1);
+        loader.setControllerFactory(ic -> {
+            if(ic.equals(VueMenu.class)) return vueMenu;
+            else if (ic.equals(VuePartition.class)) return  vuePartition;
+            else if(ic.equals(VueClavier.class)) return vueClavier;
+            else return null;
+        });
 
-        loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource("vues/vuepartition.fxml"));
-        loader.setControllerFactory(ic -> new VuePartition(arezzo));
-        grid.add(loader.load(),1,0);
-
-        grid.add(new VueMenu(), 0,0);
-
-        Scene scene = new Scene(grid,1000, 700);
+        Scene scene;
+        try {
+            scene = new Scene(loader.load(), 1000,700);
+        }catch (IOException e){
+            throw  new RuntimeException(e);
+        }
         stage.setTitle("Arezzo");
         stage.setScene(scene);
         stage.show();
