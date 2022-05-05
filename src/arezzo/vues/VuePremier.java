@@ -14,9 +14,4 @@ public class VuePremier {
         arezzo = ar;
     }
 
-    @FXML
-    void ajouter(){
-        //arezzo.getPartition().setMelodie("C");
-        System.out.println("Bouton appuyer");
-    }
 }

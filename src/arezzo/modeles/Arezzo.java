@@ -34,6 +34,5 @@ public class Arezzo {
     public void setMelodie(String note){
         parti.setMelodie(note);
         parti.play(note);
-
     }
 }
