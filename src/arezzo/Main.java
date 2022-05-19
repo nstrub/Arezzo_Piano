@@ -1,10 +1,7 @@
 package arezzo;
 
 import arezzo.modeles.Arezzo;
-import arezzo.vues.VueClavier;
-import arezzo.vues.VueMenu;
-import arezzo.vues.VuePartition;
-import arezzo.vues.VuePremier;
+import arezzo.vues.*;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
@@ -30,6 +27,7 @@ public class Main extends Application {
         VueMenu vueMenu = new VueMenu();
         VuePartition vuePartition = new VuePartition(arezzo);
         VueClavier vueClavier = new VueClavier(arezzo);
+        VueOption vueOption = new VueOption(arezzo);
 
         loader.setLocation(getClass().getResource("root.fxml"));
 
@@ -37,7 +35,8 @@ public class Main extends Application {
             if(ic.equals(VueMenu.class)) return vueMenu;
             else if (ic.equals(VuePartition.class)) return  vuePartition;
             else if(ic.equals(VueClavier.class)) return vueClavier;
-            else return null;
+            else if (ic.equals(VueOption.class)) { return vueOption;
+            } else return null;
         });
 
         Scene scene;

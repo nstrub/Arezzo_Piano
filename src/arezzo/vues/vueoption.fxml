@@ -1,14 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="arezzo.vues.VueOption"
-            prefHeight="400.0" prefWidth="600.0">
 
+<AnchorPane minHeight="400.0" minWidth="300.0" prefHeight="400.0" prefWidth="316.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="arezzo.vues.VueOption">
+   <children>
+      <Pane layoutX="64.0" layoutY="32.0" prefHeight="142.0" prefWidth="200.0">
+         <children>
+            <RadioButton layoutX="48.0" layoutY="35.0" mnemonicParsing="false" text="Aigu">
+               <toggleGroup>
+                  <ToggleGroup fx:id="octave" />
+               </toggleGroup>
+            </RadioButton>
+            <RadioButton layoutX="48.0" layoutY="71.0" mnemonicParsing="false" text="Medium" toggleGroup="$octave" />
+            <RadioButton layoutX="48.0" layoutY="101.0" mnemonicParsing="false" text="Grave" toggleGroup="$octave" />
+         </children>
+      </Pane>
+      <Pane layoutX="64.0" layoutY="193.0" prefHeight="163.0" prefWidth="200.0">
+         <children>
+            <RadioButton layoutX="48.0" layoutY="27.0" mnemonicParsing="false" text="Oeil">
+               <toggleGroup>
+                  <ToggleGroup fx:id="symbole" />
+               </toggleGroup>
+            </RadioButton>
+            <RadioButton layoutX="48.0" layoutY="64.0" mnemonicParsing="false" text="Croche creuse" toggleGroup="$symbole" />
+            <RadioButton layoutX="48.0" layoutY="99.0" mnemonicParsing="false" text="Croche pleine" toggleGroup="$symbole" />
+            <RadioButton layoutX="40.0" layoutY="131.0" mnemonicParsing="false" text="Croche iroquoise" toggleGroup="$symbole" />
+         </children>
+      </Pane>
+   </children>
 </AnchorPane>
