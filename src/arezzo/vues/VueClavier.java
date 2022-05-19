@@ -9,6 +9,7 @@ import java.awt.*;
 
 public class VueClavier {
     private Arezzo arezzo;
+    private String noteAjoue;
 
     public VueClavier(Arezzo ar){
         this.arezzo = ar;
@@ -19,8 +20,22 @@ public class VueClavier {
         System.out.println("Event là");
         if(actionEvent.getSource().getClass().equals(Button.class)){
             Button bout = (Button) actionEvent.getSource();
-            arezzo.setMelodie(bout.getId());
-            System.out.println(bout.getId());
+            noteAjoue = bout.getId();
+            if(noteAjoue.equals("CC")) {
+                noteAjoue = "^C";
+            } else if (noteAjoue.equals("FF")) {
+                noteAjoue = "^F";
+            } else if (noteAjoue.equals("DD")) {
+                noteAjoue = "^D";
+            } else if (noteAjoue.equals("GG")) {
+                noteAjoue = "^G";
+            } else if (noteAjoue.equals("AA")) {
+                noteAjoue = "^A";
+            }
+
+
+            arezzo.setMelodie(noteAjoue);
+            System.out.println(noteAjoue);
         }
     }
 }
