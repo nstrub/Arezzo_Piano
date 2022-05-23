@@ -13,6 +13,8 @@ public class Arezzo {
     private Synthesizer synthe;
     private StringBuilder notes;
     private int nbNotes;
+    private String forme;
+    private String octave;
 
     public Arezzo(){
         super();
@@ -29,6 +31,8 @@ public class Arezzo {
         parti = new Partition(synthe);
         notes = new StringBuilder();
         nbNotes = 0;
+        forme = "noire";
+        octave = "medium";
     }
 
     public Partition getPartition(){
@@ -67,5 +71,12 @@ public class Arezzo {
             parti.play(note);
         }
         System.out.println("Voila ta mélo pour l'instant bg (stringBuilder) " + notes);
+    }
+
+    public void changerOctave(String newOctave){
+        this.octave = newOctave;
+    }
+    public void changerForme(String newForme){
+        this.forme = newForme;
     }
 }
