@@ -17,6 +17,6 @@
       <Button fx:id="DD" onAction="#jouer" alignment="BOTTOM_LEFT" layoutX="140.0" layoutY="2.0" mnemonicParsing="false" prefHeight="200.0" prefWidth="60.0" style="-fx-background-color: black;" text="Ré#" textFill="WHITE" />
       <Button fx:id="GG" onAction="#jouer" alignment="BOTTOM_LEFT" layoutX="370.0" layoutY="2.0" mnemonicParsing="false" prefHeight="200.0" prefWidth="60.0" style="-fx-background-color: black;" text="Sol#" textFill="WHITE" />
       <Button fx:id="AA" onAction="#jouer" alignment="BOTTOM_LEFT" layoutX="460.0" layoutY="2.0" mnemonicParsing="false" prefHeight="200.0" prefWidth="60.0" style="-fx-background-color: black;" text="La#" textFill="WHITE" wrapText="true" />
-      <Button layoutY="400.0" mnemonicParsing="false" prefHeight="51.0" prefWidth="559.0" text="Chuuuuut" />
+      <Button fx:id="chut" onAction="#jouer" layoutY="400.0" mnemonicParsing="false" prefHeight="51.0" prefWidth="559.0" text="Chuuuuut" />
    </children>
 </AnchorPane>

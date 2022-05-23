@@ -17,7 +17,6 @@ public class VueClavier {
 
     @FXML
     void jouer(ActionEvent actionEvent) {
-        System.out.println("Event là");
         if(actionEvent.getSource().getClass().equals(Button.class)){
             Button bout = (Button) actionEvent.getSource();
             noteAjoue = bout.getId();

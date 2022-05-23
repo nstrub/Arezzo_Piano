@@ -2,13 +2,14 @@
 
 <?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 
-
 <AnchorPane minHeight="400.0" minWidth="300.0" prefHeight="400.0" prefWidth="316.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="arezzo.vues.VueOption">
    <children>
-      <Pane layoutX="64.0" layoutY="32.0" prefHeight="142.0" prefWidth="200.0">
+      <Pane layoutX="64.0" layoutY="58.0" prefHeight="142.0" prefWidth="200.0">
          <children>
             <RadioButton layoutX="48.0" layoutY="35.0" mnemonicParsing="false" text="Aigu">
                <toggleGroup>
@@ -19,16 +20,44 @@
             <RadioButton layoutX="48.0" layoutY="101.0" mnemonicParsing="false" text="Grave" toggleGroup="$octave" />
          </children>
       </Pane>
-      <Pane layoutX="64.0" layoutY="193.0" prefHeight="163.0" prefWidth="200.0">
+      <Pane layoutX="64.0" layoutY="193.0" prefHeight="195.0" prefWidth="200.0">
          <children>
-            <RadioButton layoutX="48.0" layoutY="27.0" mnemonicParsing="false" text="Oeil">
+            <RadioButton layoutX="36.0" layoutY="25.0" mnemonicParsing="false" text="Ronde">
                <toggleGroup>
                   <ToggleGroup fx:id="symbole" />
                </toggleGroup>
+               <graphic>
+                  <ImageView fitHeight="20.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../ressources/images/notes/images/ronde.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
             </RadioButton>
-            <RadioButton layoutX="48.0" layoutY="64.0" mnemonicParsing="false" text="Croche creuse" toggleGroup="$symbole" />
-            <RadioButton layoutX="48.0" layoutY="99.0" mnemonicParsing="false" text="Croche pleine" toggleGroup="$symbole" />
-            <RadioButton layoutX="40.0" layoutY="131.0" mnemonicParsing="false" text="Croche iroquoise" toggleGroup="$symbole" />
+            <RadioButton layoutX="36.0" layoutY="49.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="112.0" text="Blanche" toggleGroup="$symbole">
+               <graphic>
+                  <ImageView fitHeight="86.0" fitWidth="23.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../ressources/images/notes/images/blanche.png" />
+                     </image>
+                  </ImageView>
+               </graphic></RadioButton>
+            <RadioButton layoutX="36.0" layoutY="98.0" mnemonicParsing="false" text="Noire" toggleGroup="$symbole">
+               <graphic>
+                  <ImageView fitHeight="53.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../ressources/images/notes/images/noire.png" />
+                     </image>
+                  </ImageView>
+               </graphic></RadioButton>
+            <RadioButton layoutX="36.0" layoutY="150.0" mnemonicParsing="false" text="Croche" toggleGroup="$symbole">
+               <graphic>
+                  <ImageView fitHeight="45.0" fitWidth="38.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../ressources/images/notes/images/croche.png" />
+                     </image>
+                  </ImageView>
+               </graphic></RadioButton>
          </children>
       </Pane>
    </children>

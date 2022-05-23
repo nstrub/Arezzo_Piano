@@ -19,4 +19,7 @@ public class VuePartition {
         }
     }
 
+    public void reagir(){
+        img.setImage(arezzo.getImage());
+    }
 }

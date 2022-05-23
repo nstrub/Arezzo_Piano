@@ -3,12 +3,12 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="802.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
    <top>
         <fx:include source="vues/vuemenu.fxml" />
    </top>
    <bottom>
-      <HBox prefHeight="400.0" prefWidth="1200.0" BorderPane.alignment="CENTER">
+      <HBox prefHeight="372.0" prefWidth="1200.0" BorderPane.alignment="CENTER">
          <children>
             <fx:include source="vues/vueclavier.fxml" />
              <fx:include source="vues/vueoption.fxml" />
