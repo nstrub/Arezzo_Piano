@@ -22,10 +22,6 @@ public class VueOption {
     public void changer(){
         RadioButton formeSelect = (RadioButton) forme.getSelectedToggle();
         RadioButton octaveSelect = (RadioButton) octave.getSelectedToggle();
-        String newForme = formeSelect.getId();
-        String newOctave = octaveSelect.getId();
-        System.out.println(formeSelect.getId());
-        System.out.println(octaveSelect.getId());
         arezzo.changerForme(formeSelect.getText());
         arezzo.changerOctave(octaveSelect.getText());
     }

@@ -52,6 +52,8 @@ public class Arezzo {
     }
 
     public void setMelodie(String note){
+        String noteAdd;
+        /////On gère le nombre de note/////
         if(note.equals("chut")){
             for(int i = nbNotes; i < 4; i++){
                 this.notes.append("-");
@@ -63,12 +65,30 @@ public class Arezzo {
             this.nbNotes ++;
             if(nbNotes == 5){
                 this.notes.append("|");
-                this.nbNotes = 0;
+                this.nbNotes = 1;
             }
-            System.out.println(nbNotes);
-            this.notes.append(note);
-            parti.setMelodie(note);
-            parti.play(note);
+            /////On quelle note on ajoute/////
+                //En premier on regarde l'octave//
+            if(this.getOctave().equals("Grave")){
+                noteAdd = note + ",";
+            } else if (this.getOctave().equals("Aigu")) {
+                noteAdd = note.toLowerCase();
+            }
+            else{   //Note en medium
+                noteAdd = note;
+            }
+                //Puis on ajoute la durée corespondante//
+            if(this.getForme().equals("Croche")){
+                noteAdd = noteAdd + "/";
+            } else if (this.getForme().equals("Blanche")) {
+                noteAdd = noteAdd + "2";
+            } else if (this.getForme().equals("Ronde")) {
+                noteAdd = noteAdd + "4";
+            } //Si forme == noire, on ne change rien
+            System.out.println(this.getOctave() + " " +this.getForme());
+            this.notes.append(noteAdd);
+            parti.setMelodie(noteAdd);
+            parti.play(noteAdd);
         }
         System.out.println("Voila ta mélo pour l'instant bg (stringBuilder) " + notes);
     }
@@ -78,5 +98,13 @@ public class Arezzo {
     }
     public void changerForme(String newForme){
         this.forme = newForme;
+    }
+
+    public String getForme() {
+        return forme;
+    }
+
+    public String getOctave() {
+        return octave;
     }
 }

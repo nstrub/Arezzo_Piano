@@ -31,10 +31,7 @@ public class VueClavier {
             } else if (noteAjoue.equals("AA")) {
                 noteAjoue = "^A";
             }
-
-
             arezzo.setMelodie(noteAjoue);
-            System.out.println(noteAjoue);
         }
     }
 }
