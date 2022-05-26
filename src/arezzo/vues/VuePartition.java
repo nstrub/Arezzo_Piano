@@ -9,20 +9,22 @@ import partition.Partition;
 import javax.sound.midi.MidiSystem;
 import javax.sound.midi.Synthesizer;
 
-public class VuePartition {
+public class VuePartition implements Observateur{
     private Arezzo arezzo;
     @FXML
-    public ImageView img;
+    public ImageView parti;
 
 
     public VuePartition(Arezzo arezzo){
         this.arezzo = arezzo;
+        arezzo.ajouterObs(this);
         if(!arezzo.isMelodieVide()){
-            img.setImage(arezzo.getImage());
+            parti.setImage(arezzo.getImage());
         }
     }
 
-    public void reagir(){
-        img.setImage(arezzo.getImage());
+    @Override
+    public void reagir() {
+        this.parti.setImage(arezzo.getImage());
     }
 }

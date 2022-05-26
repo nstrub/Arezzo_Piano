@@ -5,6 +5,6 @@
 
 <ScrollPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="arezzo.vues.VuePartition">
    <content>
-      <ImageView fx:id="img" fitHeight="199.0" fitWidth="599.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="parti" pickOnBounds="true" preserveRatio="true" />
    </content>
 </ScrollPane>

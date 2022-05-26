@@ -1,5 +1,7 @@
 package arezzo.modeles;
 
+import arezzo.vues.Observateur;
+import arezzo.vues.VuePartition;
 import javafx.scene.image.Image;
 import partition.Melodie;
 import partition.Partition;
@@ -7,6 +9,7 @@ import partition.Partition;
 import javax.sound.midi.MidiSystem;
 import javax.sound.midi.MidiUnavailableException;
 import javax.sound.midi.Synthesizer;
+import java.util.ArrayList;
 
 public class Arezzo {
     private Partition parti;
@@ -15,6 +18,7 @@ public class Arezzo {
     private double nbNotes;
     private String forme;
     private String octave;
+    private ArrayList<Observateur> listeObservateur;
 
     public Arezzo(){
         super();
@@ -33,6 +37,8 @@ public class Arezzo {
         nbNotes = 0;
         forme = "Noire";
         octave = "Medium";
+        listeObservateur = new ArrayList<>();
+        parti.setPreferedMaxWidth(600);
     }
 
     public Partition getPartition(){
@@ -56,7 +62,7 @@ public class Arezzo {
         /////On gère le nombre de note/////
         if(note.equals("chut")){
             for(double i = nbNotes; i < 4; i++){
-                this.notes.append("-");
+                this.notes.append("z1");            //A faire en fonction de la forme de note séléctionnée (ronde mon zbi et tt)
             }
             this.notes.append("|");
             this.nbNotes = 0;
@@ -85,7 +91,7 @@ public class Arezzo {
                     this.notes.append("|");
                     this.nbNotes = 0;
                 }
-                parti.setMelodie(noteAdd);
+                parti.setMelodie(notes.toString());
                 parti.play(noteAdd);
             }
             else {
@@ -98,7 +104,7 @@ public class Arezzo {
             }
         }
         System.out.println("Voila ta mélo pour l'instant bg (stringBuilder) " + notes);
-
+        this.notifierObservateur();
     }
 
     /**
@@ -145,5 +151,16 @@ public class Arezzo {
 
     public String getOctave() {
         return octave;
+    }
+
+    public void ajouterObs(Observateur obs) {
+        this.listeObservateur.add(obs);
+    }
+
+    public void notifierObservateur(){
+        for (Observateur obs: listeObservateur
+             ) {
+            obs.reagir();
+        }
     }
 }
