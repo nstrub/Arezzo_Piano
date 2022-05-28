@@ -1,30 +1,45 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.Slider?>
 <?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Text?>
 
-<AnchorPane minHeight="400.0" minWidth="300.0" prefHeight="400.0" prefWidth="316.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="arezzo.vues.VueOption">
+<AnchorPane minHeight="400.0" minWidth="300.0" prefHeight="400.0" prefWidth="650.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="arezzo.vues.VueOption">
    <children>
-      <Pane layoutX="64.0" layoutY="58.0" prefHeight="142.0" prefWidth="200.0">
+      <Pane layoutX="246.0" layoutY="304.0" prefHeight="92.0" prefWidth="377.0">
          <children>
-            <RadioButton fx:id="aigu" onMouseClicked="#changer" layoutX="48.0" layoutY="35.0" mnemonicParsing="false" text="Aigu">
+            <RadioButton layoutX="14.0" layoutY="37.0" mnemonicParsing="false" text="Piano">
+               <toggleGroup>
+                  <ToggleGroup fx:id="instru" />
+               </toggleGroup>
+            </RadioButton>
+            <RadioButton layoutX="81.0" layoutY="37.0" mnemonicParsing="false" text="Guitare" toggleGroup="$instru" />
+            <RadioButton layoutX="164.0" layoutY="37.0" mnemonicParsing="false" text="Saxophone" toggleGroup="$instru" />
+            <RadioButton layoutX="270.0" layoutY="37.0" mnemonicParsing="false" text="Trompette" toggleGroup="$instru" />
+         </children>
+      </Pane>
+      <Pane layoutX="14.0" layoutY="46.0" prefHeight="142.0" prefWidth="166.0">
+         <children>
+            <RadioButton fx:id="aigu" layoutX="48.0" layoutY="35.0" mnemonicParsing="false" onMouseClicked="#changer" text="Aigu">
                <toggleGroup>
                   <ToggleGroup fx:id="octave" />
                </toggleGroup>
             </RadioButton>
-            <RadioButton fx:id="medium" selected="true" onMouseClicked="#changer" layoutX="48.0" layoutY="71.0" mnemonicParsing="false" text="Medium" toggleGroup="$octave" />
-            <RadioButton fx:id="grave" onMouseClicked="#changer" layoutX="48.0" layoutY="101.0" mnemonicParsing="false" text="Grave" toggleGroup="$octave" />
+            <RadioButton fx:id="medium" layoutX="48.0" layoutY="71.0" mnemonicParsing="false" onMouseClicked="#changer" selected="true" text="Medium" toggleGroup="$octave" />
+            <RadioButton fx:id="grave" layoutX="48.0" layoutY="101.0" mnemonicParsing="false" onMouseClicked="#changer" text="Grave" toggleGroup="$octave" />
          </children>
       </Pane>
-      <Pane layoutX="64.0" layoutY="193.0" prefHeight="195.0" prefWidth="200.0">
+      <Pane layoutX="24.0" layoutY="172.0" prefHeight="195.0" prefWidth="166.0">
          <children>
-            <RadioButton fx:id="ronde" onMouseClicked="#changer" layoutX="36.0" layoutY="25.0" mnemonicParsing="false" text="Ronde">
+            <RadioButton fx:id="ronde" layoutX="36.0" layoutY="25.0" mnemonicParsing="false" onMouseClicked="#changer" text="Ronde">
                <toggleGroup>
-                  <ToggleGroup fx:id="forme"/>
+                  <ToggleGroup fx:id="forme" />
                </toggleGroup>
                <graphic>
                   <ImageView fitHeight="20.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
@@ -34,7 +49,7 @@
                   </ImageView>
                </graphic>
             </RadioButton>
-            <RadioButton fx:id="blanche" onMouseClicked="#changer" layoutX="36.0" layoutY="49.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="112.0" text="Blanche" toggleGroup="$forme">
+            <RadioButton fx:id="blanche" layoutX="36.0" layoutY="49.0" mnemonicParsing="false" onMouseClicked="#changer" prefHeight="45.0" prefWidth="112.0" text="Blanche" toggleGroup="$forme">
                <graphic>
                   <ImageView fitHeight="86.0" fitWidth="23.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -42,7 +57,7 @@
                      </image>
                   </ImageView>
                </graphic></RadioButton>
-            <RadioButton fx:id="noire" selected="true" onMouseClicked="#changer" layoutX="36.0" layoutY="98.0" mnemonicParsing="false" text="Noire" toggleGroup="$forme">
+            <RadioButton fx:id="noire" layoutX="36.0" layoutY="98.0" mnemonicParsing="false" onMouseClicked="#changer" selected="true" text="Noire" toggleGroup="$forme">
                <graphic>
                   <ImageView fitHeight="53.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -50,7 +65,7 @@
                      </image>
                   </ImageView>
                </graphic></RadioButton>
-            <RadioButton fx:id="croche" onMouseClicked="#changer" layoutX="36.0" layoutY="150.0" mnemonicParsing="false" text="Croche" toggleGroup="$forme">
+            <RadioButton fx:id="croche" layoutX="36.0" layoutY="150.0" mnemonicParsing="false" onMouseClicked="#changer" text="Croche" toggleGroup="$forme">
                <graphic>
                   <ImageView fitHeight="45.0" fitWidth="38.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -58,6 +73,19 @@
                      </image>
                   </ImageView>
                </graphic></RadioButton>
+         </children>
+      </Pane>
+      <Pane layoutX="198.0" layoutY="172.0" prefHeight="132.0" prefWidth="384.0">
+         <children>
+            <Slider fx:id="volume" onMouseReleased="#changetVolume" layoutX="82.0" layoutY="14.0" prefHeight="15.0" prefWidth="288.0" showTickLabels="true" showTickMarks="true" value="100.0" />
+            <Slider fx:id="tempo" onMouseReleased="#changerTempo" layoutX="82.0" layoutY="66.0" max="220.0" min="40.0" prefHeight="15.0" prefWidth="288.0" showTickLabels="true" showTickMarks="true" value="180.0" />
+            <Text layoutX="25.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Volume" wrappingWidth="52.99609375" />
+            <Text layoutX="29.0" layoutY="77.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tempo" />
+         </children>
+      </Pane>
+      <Pane layoutX="311.0" layoutY="36.0" prefHeight="115.0" prefWidth="200.0">
+         <children>
+            <Button onAction="#jouer" layoutX="69.0" layoutY="46.0" mnemonicParsing="false" text="PLAY5" />
          </children>
       </Pane>
    </children>

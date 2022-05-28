@@ -19,6 +19,8 @@ public class Arezzo {
     private String forme;
     private String octave;
     private ArrayList<Observateur> listeObservateur;
+    private double volume;
+    private int tempo;
 
     public Arezzo(){
         super();
@@ -39,6 +41,8 @@ public class Arezzo {
         octave = "Medium";
         listeObservateur = new ArrayList<>();
         parti.setPreferedMaxWidth(600);
+        tempo = 180;
+        parti.setTempo(tempo);
     }
 
     public Partition getPartition(){
@@ -51,6 +55,16 @@ public class Arezzo {
             return true;
         }
         return false;
+    }
+
+    public void modifVolume(double newVol){
+        this.volume = newVol;
+        this.parti.setVolume(volume);
+    }
+
+    public void modifTempo(int newTempo){
+        this.tempo = newTempo;
+        this.parti.setTempo(tempo);
     }
 
     public Image getImage(){
@@ -66,6 +80,7 @@ public class Arezzo {
             }
             this.notes.append("|");
             this.nbNotes = 0;
+            parti.setMelodie(notes.toString());
         }
         else{
             if(assezDePlace(this.getForme())){
@@ -136,6 +151,10 @@ public class Arezzo {
             }
         }
         return true;
+    }
+
+    public void jouerTout(){
+        parti.play();
     }
 
     public void changerOctave(String newOctave){

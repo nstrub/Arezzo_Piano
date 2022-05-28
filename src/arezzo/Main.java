@@ -41,7 +41,7 @@ public class Main extends Application {
 
         Scene scene;
         try {
-            scene = new Scene(loader.load(), 1000,800);
+            scene = new Scene(loader.load(), 1200,800);
         }catch (IOException e){
             throw  new RuntimeException(e);
         }
