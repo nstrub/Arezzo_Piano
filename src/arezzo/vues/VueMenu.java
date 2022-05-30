@@ -18,7 +18,6 @@ public class VueMenu extends MenuBar{
     private javafx.scene.control.MenuItem fermer;
     @FXML
     private MenuItem nouveau;
-    private Popup popup;
     private String nomTitre;
     private Arezzo arezzo;
 

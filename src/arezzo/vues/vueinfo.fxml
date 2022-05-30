@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -16,11 +17,15 @@
       </Label>
       <Pane layoutX="165.0" layoutY="108.0" prefHeight="255.0" prefWidth="270.0">
          <children>
-            <ImageView fitHeight="255.0" fitWidth="270.0" layoutX="47.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../../ressources/images/notes/images/croche.png" />
-               </image>
-            </ImageView>
+            <Button fx:id="boutonFenetre" onAction="#popFenetre" layoutX="46.0" mnemonicParsing="false">
+               <graphic>
+                  <ImageView fitHeight="255.0" fitWidth="270.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../ressources/images/notes/images/croche.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
          </children>
       </Pane>
    </children>

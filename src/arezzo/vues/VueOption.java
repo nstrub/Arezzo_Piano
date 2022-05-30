@@ -58,7 +58,6 @@ public class VueOption implements Observateur{
     public void changerVolume(){
         double sliderVol = volume.getValue();
         arezzo.modifVolume(sliderVol);
-        System.out.println("New volume " + sliderVol);
     }
 
     public void changerTempo() {

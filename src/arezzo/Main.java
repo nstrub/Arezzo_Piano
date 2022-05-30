@@ -28,7 +28,7 @@ public class Main extends Application {
         VuePartition vuePartition = new VuePartition(arezzo);
         VueClavier vueClavier = new VueClavier(arezzo);
         VueOption vueOption = new VueOption(arezzo);
-        VueInfo vueInfo = new VueInfo(arezzo);
+        VueInfo vueInfo = new VueInfo(arezzo, stage);
 
         loader.setLocation(getClass().getResource("root.fxml"));
 

@@ -7,6 +7,8 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.google.gson.stream.JsonWriter;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.scene.image.Image;
 import netscape.javascript.JSObject;
 import partition.Melodie;
@@ -35,6 +37,8 @@ public class Arezzo {
     private String instrument;
     private String nom;
     private Gson gson;
+    private ArrayList<String> listeNotes;
+    private ObservableList<String> listeNotesObservable;
 
     public Arezzo(){
         super();
@@ -60,6 +64,7 @@ public class Arezzo {
         instrument = "Piano";
         parti.setInstrument(instrument);
         nom = "Votre morcreau";
+        listeNotes = new ArrayList<>();
         gson = new Gson();
     }
 
@@ -134,6 +139,7 @@ public class Arezzo {
                     noteAdd = noteAdd + "4";
                 } //Si forme == noire, on ne change rien
                 this.notes.append(noteAdd);
+                this.listeNotes.add(noteAdd);
                 if(this.nbNotes == 4){
                     this.notes.append("|");
                     this.nbNotes = 0;
@@ -143,15 +149,14 @@ public class Arezzo {
             }
             else {
                 System.out.println("Pas assez de place pour le note choisie : ajout de |");
-                for(double i = nbNotes; i < 4; i++){
-                    this.notes.append("-");
-                }
                 this.notes.append("|");
                 this.nbNotes = 0;
             }
         }
         System.out.println("Votre oeuvre : " + notes);
+        System.out.println("En liste s'il vous plaît !" + listeNotes.toString());
         this.notifierObservateur();
+        System.out.println("");
     }
 
     /**
@@ -166,21 +171,16 @@ public class Arezzo {
                 return false;
             }
         }
-        if(forme.equals("Croche")){   // + 0.5
-            this.nbNotes = nbNotes + 0.5;
-            if (this.nbNotes > 4) {
-                return false;
-            }
-        } else if (forme.equals("Blanche")) { // + 2
-            this.nbNotes += 2;
-            if (this.nbNotes > 4) {
-                return false;
-            }
-        } else if (forme.equals("Ronde")) {   // + 4
-            this.nbNotes += 4;
-            if (this.nbNotes > 4) {
-                return false;
-            }
+        switch (forme) {
+            case "Croche":    // + 0.5
+                this.nbNotes = nbNotes + 0.5;
+                return !(this.nbNotes > 4);
+            case "Blanche":  // + 2
+                this.nbNotes += 2;
+                return !(this.nbNotes > 4);
+            case "Ronde":    // + 4
+                this.nbNotes += 4;
+                return !(this.nbNotes > 4);
         }
         return true;
     }
@@ -204,6 +204,15 @@ public class Arezzo {
         return octave;
     }
 
+    public ArrayList<String> getListeNotes() {
+        return listeNotes;
+    }
+
+    public ObservableList<String> getListeNotesObservable() {
+        this.listeNotesObservable = FXCollections.observableArrayList(this.listeNotes);
+        return listeNotesObservable;
+    }
+
     public void ajouterObs(Observateur obs) {
         this.listeObservateur.add(obs);
     }
@@ -219,7 +228,6 @@ public class Arezzo {
         this.nom = newNom;
         this.notifierObservateur();
     }
-
 
 
     public void sauvegarder(){
