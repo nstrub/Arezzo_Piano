@@ -2,9 +2,13 @@ package arezzo.modeles;
 
 import arezzo.vues.Observateur;
 import arezzo.vues.VuePartition;
+import com.google.gson.Gson;
+import com.google.gson.JsonObject;
 import javafx.scene.image.Image;
+import netscape.javascript.JSObject;
 import partition.Melodie;
 import partition.Partition;
+//import gson;
 
 import javax.sound.midi.MidiSystem;
 import javax.sound.midi.MidiUnavailableException;
@@ -21,6 +25,9 @@ public class Arezzo {
     private ArrayList<Observateur> listeObservateur;
     private double volume;
     private int tempo;
+    private String instrument;
+    private String nom;
+    private Gson gson;
 
     public Arezzo(){
         super();
@@ -43,10 +50,10 @@ public class Arezzo {
         parti.setPreferedMaxWidth(600);
         tempo = 180;
         parti.setTempo(tempo);
-    }
-
-    public Partition getPartition(){
-        return parti;
+        instrument = "Piano";
+        parti.setInstrument(instrument);
+        nom = "Votre morcreau";
+        gson = new Gson();
     }
 
 
@@ -67,8 +74,27 @@ public class Arezzo {
         this.parti.setTempo(tempo);
     }
 
+    public void modifInstrument(String newInstru){
+        this.instrument = newInstru;
+        parti.setInstrument(instrument);
+        this.notifierObservateur();
+    }
+
     public Image getImage(){
         return parti.getImage();
+    }
+    public Image getImagePlay(){
+        switch (instrument) {
+            case "Guitare":
+                return new Image("images/bouton/playGuitare.png");
+            case "Trompette":
+                return new Image("images/bouton/playTrompette.png");
+            case "Saxophone":
+                return new Image("images/bouton/playSax.png");
+        }
+        //Par défaut, l'image select est le piano
+        return new Image("images/bouton/playPiano.png");
+
     }
 
     public void setMelodie(String note){
@@ -100,7 +126,6 @@ public class Arezzo {
                 } else if (this.getForme().equals("Ronde")) {
                     noteAdd = noteAdd + "4";
                 } //Si forme == noire, on ne change rien
-                System.out.println(this.getOctave() + " " +this.getForme());
                 this.notes.append(noteAdd);
                 if(this.nbNotes == 4){
                     this.notes.append("|");
@@ -110,7 +135,7 @@ public class Arezzo {
                 parti.play(noteAdd);
             }
             else {
-                System.out.println("Pas assez de place frère");
+                System.out.println("Pas assez de place pour le note choisie : ajout de |");
                 for(double i = nbNotes; i < 4; i++){
                     this.notes.append("-");
                 }
@@ -118,14 +143,14 @@ public class Arezzo {
                 this.nbNotes = 0;
             }
         }
-        System.out.println("Voila ta mélo pour l'instant bg (stringBuilder) " + notes);
+        System.out.println("Votre oeuvre : " + notes);
         this.notifierObservateur();
     }
 
     /**
      * Augmente nbNotes en fonction de la durée de la note voulue et regarde si on peut la posée
      * @param forme
-     * @return
+     * @return  true si assez de place dans la partition pour ajouter la note souhaitée
      */
     public boolean assezDePlace(String forme){
         if(forme.equals("Noire")){    // + 1
@@ -176,10 +201,34 @@ public class Arezzo {
         this.listeObservateur.add(obs);
     }
 
+    public String getInstrument() {
+        return instrument;
+    }
+
+    public String getNom(){
+        return nom;
+    }
+    public void changerNom(String newNom){
+        this.nom = newNom;
+        this.notifierObservateur();
+    }
+
+//    public void save(){
+//         writer
+//    }
+
+    public void cleanNotes(){
+        this.notes = new StringBuilder();
+        this.notifierObservateur();
+    }
+
     public void notifierObservateur(){
         for (Observateur obs: listeObservateur
              ) {
             obs.reagir();
         }
     }
+
+
+
 }

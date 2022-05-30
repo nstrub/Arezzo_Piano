@@ -4,12 +4,19 @@
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
 
-<MenuBar xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/18" fx:controller="arezzo.vues.VueMenu">
+<MenuBar xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="arezzo.vues.VueMenu">
   <menus>
     <Menu mnemonicParsing="false" text="Menu">
       <items>
-        <MenuItem onAction="#quitter" mnemonicParsing="false" text="Quitter"  />
+        <MenuItem mnemonicParsing="false" onAction="#quitter" text="Quitter" />
+          <MenuItem fx:id="nouveau" mnemonicParsing="false" onAction="#nouveau" text="Nouveau" />
       </items>
     </Menu>
+      <Menu mnemonicParsing="false" text="Outils">
+         <items>
+            <MenuItem mnemonicParsing="false" text="Ouvrir" />
+            <MenuItem mnemonicParsing="false" text="Enregistrer" />
+         </items>
+      </Menu>
   </menus>
 </MenuBar>

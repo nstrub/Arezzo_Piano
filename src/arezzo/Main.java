@@ -19,15 +19,16 @@ import java.io.IOException;
 public class Main extends Application {
 
     @Override
-    public void start(Stage stage) throws Exception {
+    public void start(Stage stage) {
         GridPane grid = new GridPane();
         FXMLLoader loader = new FXMLLoader();
         Arezzo arezzo = new Arezzo();
 
-        VueMenu vueMenu = new VueMenu();
+        VueMenu vueMenu = new VueMenu(arezzo);
         VuePartition vuePartition = new VuePartition(arezzo);
         VueClavier vueClavier = new VueClavier(arezzo);
         VueOption vueOption = new VueOption(arezzo);
+        VueInfo vueInfo = new VueInfo(arezzo);
 
         loader.setLocation(getClass().getResource("root.fxml"));
 
@@ -35,8 +36,9 @@ public class Main extends Application {
             if(ic.equals(VueMenu.class)) return vueMenu;
             else if (ic.equals(VuePartition.class)) return  vuePartition;
             else if(ic.equals(VueClavier.class)) return vueClavier;
-            else if (ic.equals(VueOption.class)) { return vueOption;
-            } else return null;
+            else if (ic.equals(VueOption.class)) return vueOption;
+            else if (ic.equals(VueInfo.class)) return vueInfo;
+            else return null;
         });
 
         Scene scene;

@@ -25,6 +25,9 @@ public class VuePartition implements Observateur{
 
     @Override
     public void reagir() {
+        if(arezzo.isMelodieVide()){
+            return;
+        }
         this.parti.setImage(arezzo.getImage());
     }
 }

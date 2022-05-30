@@ -18,4 +18,7 @@
    <left>
       <fx:include source="vues/vuepartition.fxml" />
    </left>
+   <right>
+      <fx:include source="vues/vueinfo.fxml" />
+   </right>
 </BorderPane>

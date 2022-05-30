@@ -14,14 +14,14 @@
    <children>
       <Pane layoutX="246.0" layoutY="304.0" prefHeight="92.0" prefWidth="377.0">
          <children>
-            <RadioButton layoutX="14.0" layoutY="37.0" mnemonicParsing="false" text="Piano">
+            <RadioButton layoutX="14.0" layoutY="37.0" mnemonicParsing="false" onMouseClicked="#changerInstru" selected="true" text="Piano">
                <toggleGroup>
                   <ToggleGroup fx:id="instru" />
                </toggleGroup>
             </RadioButton>
-            <RadioButton layoutX="81.0" layoutY="37.0" mnemonicParsing="false" text="Guitare" toggleGroup="$instru" />
-            <RadioButton layoutX="164.0" layoutY="37.0" mnemonicParsing="false" text="Saxophone" toggleGroup="$instru" />
-            <RadioButton layoutX="270.0" layoutY="37.0" mnemonicParsing="false" text="Trompette" toggleGroup="$instru" />
+            <RadioButton layoutX="81.0" layoutY="37.0" mnemonicParsing="false" onMouseClicked="#changerInstru" text="Guitare" toggleGroup="$instru" />
+            <RadioButton layoutX="164.0" layoutY="37.0" mnemonicParsing="false" onMouseClicked="#changerInstru" text="Saxophone" toggleGroup="$instru" />
+            <RadioButton layoutX="270.0" layoutY="37.0" mnemonicParsing="false" onMouseClicked="#changerInstru" text="Trompette" toggleGroup="$instru" />
          </children>
       </Pane>
       <Pane layoutX="14.0" layoutY="46.0" prefHeight="142.0" prefWidth="166.0">
@@ -77,15 +77,22 @@
       </Pane>
       <Pane layoutX="198.0" layoutY="172.0" prefHeight="132.0" prefWidth="384.0">
          <children>
-            <Slider fx:id="volume" onMouseReleased="#changetVolume" layoutX="82.0" layoutY="14.0" prefHeight="15.0" prefWidth="288.0" showTickLabels="true" showTickMarks="true" value="100.0" />
-            <Slider fx:id="tempo" onMouseReleased="#changerTempo" layoutX="82.0" layoutY="66.0" max="220.0" min="40.0" prefHeight="15.0" prefWidth="288.0" showTickLabels="true" showTickMarks="true" value="180.0" />
+            <Slider fx:id="volume" layoutX="82.0" layoutY="14.0" onMouseReleased="#changerVolume" prefHeight="15.0" prefWidth="288.0" showTickLabels="true" showTickMarks="true" value="100.0" />
+            <Slider fx:id="tempo" layoutX="82.0" layoutY="66.0" max="220.0" min="40.0" onMouseReleased="#changerTempo" prefHeight="15.0" prefWidth="288.0" showTickLabels="true" showTickMarks="true" value="180.0" />
             <Text layoutX="25.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Volume" wrappingWidth="52.99609375" />
             <Text layoutX="29.0" layoutY="77.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tempo" />
          </children>
       </Pane>
-      <Pane layoutX="311.0" layoutY="36.0" prefHeight="115.0" prefWidth="200.0">
+      <Pane layoutX="320.0" layoutY="46.0" prefHeight="115.0" prefWidth="166.0">
          <children>
-            <Button onAction="#jouer" layoutX="69.0" layoutY="46.0" mnemonicParsing="false" text="PLAY5" />
+            <Button layoutX="-8.0" layoutY="8.0" mnemonicParsing="false" onAction="#jouer" prefHeight="15.0" prefWidth="174.0">
+               <graphic>
+                  <ImageView fx:id="playButton" fitHeight="92.0" fitWidth="147.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../ressources/images/bouton/playPiano.png" />
+                     </image>
+                  </ImageView>
+               </graphic></Button>
          </children>
       </Pane>
    </children>
