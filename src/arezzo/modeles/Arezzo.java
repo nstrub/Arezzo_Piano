@@ -3,7 +3,10 @@ package arezzo.modeles;
 import arezzo.vues.Observateur;
 import arezzo.vues.VuePartition;
 import com.google.gson.Gson;
+import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
+import com.google.gson.stream.JsonWriter;
 import javafx.scene.image.Image;
 import netscape.javascript.JSObject;
 import partition.Melodie;
@@ -13,6 +16,10 @@ import partition.Partition;
 import javax.sound.midi.MidiSystem;
 import javax.sound.midi.MidiUnavailableException;
 import javax.sound.midi.Synthesizer;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class Arezzo {
@@ -213,11 +220,17 @@ public class Arezzo {
         this.notifierObservateur();
     }
 
-//    public void save(){
-//         writer
-//    }
 
-    public void cleanNotes(){
+
+    public void sauvegarder(){
+
+    }
+
+    public void ouvrir() {
+
+    }
+
+        public void cleanNotes(){
         this.notes = new StringBuilder();
         this.notifierObservateur();
     }
