@@ -40,16 +40,16 @@ public class Arezzo {
     private ArrayList<String> listeNotes;
     private ObservableList<String> listeNotesObservable;
 
-    public Arezzo(){
+    public Arezzo() {
         super();
-        try{
+        try {
             synthe = MidiSystem.getSynthesizer();
-        }catch (MidiUnavailableException e){
+        } catch (MidiUnavailableException e) {
             throw new RuntimeException(e);
         }
-        try{
+        try {
             synthe.open();
-        }catch (MidiUnavailableException e){
+        } catch (MidiUnavailableException e) {
             throw new RuntimeException(e);
         }
         parti = new Partition(synthe);
@@ -69,33 +69,34 @@ public class Arezzo {
     }
 
 
-    public Boolean isMelodieVide(){
-        if(notes.length() == 0){
+    public Boolean isMelodieVide() {
+        if (notes.length() == 0) {
             return true;
         }
         return false;
     }
 
-    public void modifVolume(double newVol){
+    public void modifVolume(double newVol) {
         this.volume = newVol;
         this.parti.setVolume(volume);
     }
 
-    public void modifTempo(int newTempo){
+    public void modifTempo(int newTempo) {
         this.tempo = newTempo;
         this.parti.setTempo(tempo);
     }
 
-    public void modifInstrument(String newInstru){
+    public void modifInstrument(String newInstru) {
         this.instrument = newInstru;
         parti.setInstrument(instrument);
         this.notifierObservateur();
     }
 
-    public Image getImage(){
+    public Image getImage() {
         return parti.getImage();
     }
-    public Image getImagePlay(){
+
+    public Image getImagePlay() {
         switch (instrument) {
             case "Guitare":
                 return new Image("images/bouton/playGuitare.png");
@@ -109,29 +110,27 @@ public class Arezzo {
 
     }
 
-    public void setMelodie(String note){
+    public void setMelodie(String note) {
         String noteAdd;
         /////On gère le nombre de note/////
-        if(note.equals("chut")){
-            for(double i = nbNotes; i < 4; i++){
+        if (note.equals("chut")) {
+            for (double i = nbNotes; i < 4; i++) {
                 this.notes.append("z1");            //A faire en fonction de la forme de note séléctionnée (ronde mon zbi et tt)
             }
             this.notes.append("|");
             this.nbNotes = 0;
             parti.setMelodie(notes.toString());
-        }
-        else{
-            if(assezDePlace(this.getForme())){
-                if(this.getOctave().equals("Grave")){
+        } else {
+            if (assezDePlace(this.getForme())) {
+                if (this.getOctave().equals("Grave")) {
                     noteAdd = note + ",";
                 } else if (this.getOctave().equals("Aigu")) {
                     noteAdd = note.toLowerCase();
-                }
-                else{   //Note en medium
+                } else {   //Note en medium
                     noteAdd = note;
                 }
                 //Puis on ajoute la durée corespondante//
-                if(this.getForme().equals("Croche")){
+                if (this.getForme().equals("Croche")) {
                     noteAdd = noteAdd + "/";
                 } else if (this.getForme().equals("Blanche")) {
                     noteAdd = noteAdd + "2";
@@ -140,14 +139,13 @@ public class Arezzo {
                 } //Si forme == noire, on ne change rien
                 this.notes.append(noteAdd);
                 this.listeNotes.add(noteAdd);
-                if(this.nbNotes == 4){
+                if (this.nbNotes == 4) {
                     this.notes.append("|");
                     this.nbNotes = 0;
                 }
                 parti.setMelodie(notes.toString());
                 parti.play(noteAdd);
-            }
-            else {
+            } else {
                 System.out.println("Pas assez de place pour le note choisie : ajout de |");
                 this.notes.append("|");
                 this.nbNotes = 0;
@@ -161,12 +159,13 @@ public class Arezzo {
 
     /**
      * Augmente nbNotes en fonction de la durée de la note voulue et regarde si on peut la posée
+     *
      * @param forme
-     * @return  true si assez de place dans la partition pour ajouter la note souhaitée
+     * @return true si assez de place dans la partition pour ajouter la note souhaitée
      */
-    public boolean assezDePlace(String forme){
-        if(forme.equals("Noire")){    // + 1
-            this.nbNotes ++;
+    public boolean assezDePlace(String forme) {
+        if (forme.equals("Noire")) {    // + 1
+            this.nbNotes++;
             if (this.nbNotes > 4) {
                 return false;
             }
@@ -185,14 +184,15 @@ public class Arezzo {
         return true;
     }
 
-    public void jouerTout(){
+    public void jouerTout() {
         parti.play();
     }
 
-    public void changerOctave(String newOctave){
+    public void changerOctave(String newOctave) {
         this.octave = newOctave;
     }
-    public void changerForme(String newForme){
+
+    public void changerForme(String newForme) {
         this.forme = newForme;
     }
 
@@ -221,16 +221,17 @@ public class Arezzo {
         return instrument;
     }
 
-    public String getNom(){
+    public String getNom() {
         return nom;
     }
-    public void changerNom(String newNom){
+
+    public void changerNom(String newNom) {
         this.nom = newNom;
         this.notifierObservateur();
     }
 
 
-    public void sauvegarder(){
+    public void sauvegarder() {
 
     }
 
@@ -238,18 +239,21 @@ public class Arezzo {
 
     }
 
-        public void cleanNotes(){
+
+    public void supprimerNotes(Object o) {
+    }
+
+    public void cleanNotes() {
         this.notes = new StringBuilder();
+        this.listeNotes = new ArrayList<>();
         this.notifierObservateur();
     }
 
-    public void notifierObservateur(){
-        for (Observateur obs: listeObservateur
-             ) {
+    public void notifierObservateur() {
+        for (Observateur obs : listeObservateur
+        ) {
             obs.reagir();
         }
     }
-
-
-
 }
+

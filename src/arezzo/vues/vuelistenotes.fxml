@@ -1,26 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.ListView?>
 
 
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
-<Pane xmlns="http://javafx.com/javafx"
-      xmlns:fx="http://javafx.com/fxml"
-      fx:controller="arezzo.vues.VueListeNotes" layoutX="165.0" layoutY="108.0" prefHeight="255.0" prefWidth="270.0">
-<children>
-    <Button layoutX="46.0" mnemonicParsing="false">
-        <graphic>
-            <ImageView fitHeight="255.0" fitWidth="270.0" pickOnBounds="true" preserveRatio="true">
-                <image>
-                    <Image url="@../../ressources/images/notes/images/croche.png" />
-                </image>
-            </ImageView>
-        </graphic>
-    </Button>
-</children>
-</Pane>
+<ListView fx:id="listViewNotes" prefHeight="326.0" prefWidth="200.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="arezzo.vues.VueListeNotes" />

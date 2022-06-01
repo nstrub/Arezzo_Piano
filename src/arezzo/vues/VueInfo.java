@@ -1,12 +1,12 @@
 package arezzo.vues;
 
 import arezzo.modeles.Arezzo;
-import arezzo.modeles.ListeNotes;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.ListView;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
@@ -19,6 +19,7 @@ public class VueInfo implements Observateur{
     Label nomChanson;
     @FXML
     Button boutonFenetre;
+    public ListView<String> listeDansInfo;
 
     public VueInfo(Arezzo arezzo, Stage st){
         this.arezzo = arezzo;
@@ -28,22 +29,24 @@ public class VueInfo implements Observateur{
 
     public void popFenetre(){
         FXMLLoader loader = new FXMLLoader();
+        Stage st = new Stage();
         loader.setLocation(getClass().getResource("vuelistenotes.fxml"));
-        ListeNotes listeNotes = new ListeNotes(arezzo);
+
+        VueListeNotes vueListeNotes = new VueListeNotes(arezzo,st);
 
         loader.setControllerFactory(ic ->{
-            if(ic.equals(ListeNotes.class)) return listeNotes;
+            if (ic.equals(VueListeNotes.class)) return vueListeNotes;
             else{
                 return null;
             }
         });
+
         Scene scene;
         try{
             scene = new Scene(loader.load(),400,500);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-        Stage st = new Stage();
         st.setTitle("Liste des notes");
         st.initModality(Modality.WINDOW_MODAL);
         st.initOwner(stage);
