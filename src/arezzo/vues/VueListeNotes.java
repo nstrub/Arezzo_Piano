@@ -32,7 +32,6 @@ public class VueListeNotes implements Initializable {
         this.arezzo = arezzo;
         stage = st;
         arrayNotes = arezzo.getListeNotes();
-        listeObservable = arezzo.getListeNotesObservable();
     }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -51,6 +50,6 @@ public class VueListeNotes implements Initializable {
 
         listViewNotes.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
         listViewNotes.contextMenuProperty().setValue(menuListe);
-        //fenetreNotes.setCellFactory(stringListeView -> new CompoCell(arezzo));
+        listViewNotes.setCellFactory(stringListeView -> new CompoCell(arezzo));
     }
 }

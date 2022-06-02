@@ -30,9 +30,7 @@ public class Arezzo {
     private int tempo;
     private String instrument;
     private String nom;
-    private Gson gson;
     private ArrayList<String> listeNotes;
-    private ObservableList<String> listeNotesObservable;
     private JSONObject json;
 
     public Arezzo() {
@@ -60,7 +58,6 @@ public class Arezzo {
         parti.setInstrument(instrument);
         nom = "Votre morcreau";
         listeNotes = new ArrayList<>();
-        gson = new Gson();
         json = new JSONObject();
     }
 
@@ -204,21 +201,8 @@ public class Arezzo {
         return listeNotes;
     }
 
-    public ObservableList<String> getListeNotesObservable() {
-        this.listeNotesObservable = FXCollections.observableArrayList(this.listeNotes);
-        return listeNotesObservable;
-    }
-
     public void ajouterObs(Observateur obs) {
         this.listeObservateur.add(obs);
-    }
-
-    public StringBuilder getNotes() {
-        return notes;
-    }
-
-    public String getInstrument() {
-        return instrument;
     }
 
     public String getNom() {
