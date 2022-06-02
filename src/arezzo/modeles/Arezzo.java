@@ -1,9 +1,5 @@
 package arezzo.modeles;
 
-import arezzo.vues.Observateur;
-import com.google.gson.Gson;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.scene.image.Image;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -136,6 +132,7 @@ public class Arezzo {
                     this.notes.append("|");
                     this.nbNotes = 0;
                 }
+                System.out.println(notes.toString());
                 parti.setMelodie(notes.toString());
                 parti.play(noteAdd);
             } else {

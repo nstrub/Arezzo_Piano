@@ -1,24 +1,17 @@
 package arezzo.vues;
 
 import arezzo.modeles.Arezzo;
+import arezzo.modeles.Observateur;
 import javafx.animation.RotateTransition;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.Slider;
 import javafx.scene.control.ToggleGroup;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.transform.Rotate;
-import javafx.scene.transform.Translate;
 import javafx.util.Duration;
 
-import java.awt.*;
-import java.sql.SQLOutput;
-
-public class VueOption implements Observateur{
+public class VueOption implements Observateur {
     private Arezzo arezzo;
     @FXML
     ToggleGroup octave;

@@ -1,18 +1,18 @@
 package arezzo.vues;
 
 import arezzo.modeles.Arezzo;
+import arezzo.modeles.Observateur;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.ListView;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class VueInfo implements Observateur{
+public class VueInfo implements Observateur {
     private Arezzo arezzo;
     private Stage stage;
     @FXML
@@ -31,7 +31,7 @@ public class VueInfo implements Observateur{
         Stage st = new Stage();
         loader.setLocation(getClass().getResource("vuelistenotes.fxml"));
 
-        VueListeNotes vueListeNotes = new VueListeNotes(arezzo,st);
+        VueListeNotes vueListeNotes = new VueListeNotes(arezzo);
 
         loader.setControllerFactory(ic ->{
             if (ic.equals(VueListeNotes.class)) return vueListeNotes;

@@ -22,15 +22,11 @@ public class VueListeNotes implements Initializable {
     ListView<String> listViewNotes;
     @FXML
     ContextMenu menuListe;
-    private Stage stage;
-    private ObservableList<String> stringObservableList;
     private ArrayList<String> arrayNotes;
-    private ObservableList<String> listeObservable;
 
 
-    public VueListeNotes(Arezzo arezzo, Stage st) {
+    public VueListeNotes(Arezzo arezzo) {
         this.arezzo = arezzo;
-        stage = st;
         arrayNotes = arezzo.getListeNotes();
     }
     @Override
@@ -50,6 +46,6 @@ public class VueListeNotes implements Initializable {
 
         listViewNotes.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
         listViewNotes.contextMenuProperty().setValue(menuListe);
-        listViewNotes.setCellFactory(stringListeView -> new CompoCell(arezzo));
+        //listViewNotes.setCellFactory(stringListeView -> new CompoCell(arezzo));
     }
 }

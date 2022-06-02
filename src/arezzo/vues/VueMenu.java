@@ -23,9 +23,6 @@ import java.nio.file.Path;
 import java.util.Optional;
 
 public class VueMenu extends MenuBar {
-    private javafx.scene.control.Menu menu;
-    @FXML
-    private javafx.scene.control.MenuItem fermer;
     @FXML
     private MenuItem nouveau;
     private String nomTitre;
