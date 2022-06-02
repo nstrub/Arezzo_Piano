@@ -11,6 +11,8 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.image.Image;
 import netscape.javascript.JSObject;
+import org.json.JSONException;
+import org.json.JSONObject;
 import partition.Melodie;
 import partition.Partition;
 //import gson;
@@ -18,10 +20,7 @@ import partition.Partition;
 import javax.sound.midi.MidiSystem;
 import javax.sound.midi.MidiUnavailableException;
 import javax.sound.midi.Synthesizer;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
 import java.util.ArrayList;
 
 public class Arezzo {
@@ -39,6 +38,7 @@ public class Arezzo {
     private Gson gson;
     private ArrayList<String> listeNotes;
     private ObservableList<String> listeNotesObservable;
+    private JSONObject json;
 
     public Arezzo() {
         super();
@@ -66,6 +66,7 @@ public class Arezzo {
         nom = "Votre morcreau";
         listeNotes = new ArrayList<>();
         gson = new Gson();
+        json = new JSONObject();
     }
 
 
@@ -217,6 +218,10 @@ public class Arezzo {
         this.listeObservateur.add(obs);
     }
 
+    public StringBuilder getNotes() {
+        return notes;
+    }
+
     public String getInstrument() {
         return instrument;
     }
@@ -230,22 +235,46 @@ public class Arezzo {
         this.notifierObservateur();
     }
 
-
-    public void sauvegarder() {
-
-    }
-
-    public void ouvrir() {
-
-    }
-
-
     public void supprimerNotes(Object o) {
+    }
+
+    public void chargerDonnees(File file) throws JSONException {
+        String lecture;
+        try{
+            FileReader fileReader = new FileReader(file.getAbsoluteFile());
+            BufferedReader bufferedReader = new BufferedReader(fileReader);
+            lecture = bufferedReader.readLine();
+        } catch (FileNotFoundException e) {
+            throw new RuntimeException(e);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        this.importerDonneesChargees(lecture);
+    }
+    public void importerDonneesChargees(String fichier) throws JSONException {
+        json = new JSONObject(fichier);
+        notes = new StringBuilder();
+        listeNotes.clear();
+        nbNotes = 0;
+        ArrayList<String> arrayCharger = (ArrayList<String>) json.get("ArrayNotes");
+        this.listeNotes = arrayCharger;
+        String newTitre = (String) json.get("Titre");
+        nom = newTitre;
+        this.notifierObservateur();
+    }
+    public void sauvegarder() throws JSONException {
+        json.put("ArrayNotes", listeNotes);
+        json.put("Titre", nom);
+    }
+
+    public JSONObject getJson() {
+        return json;
     }
 
     public void cleanNotes() {
         this.notes = new StringBuilder();
         this.listeNotes = new ArrayList<>();
+        nbNotes = 0;
         this.notifierObservateur();
     }
 

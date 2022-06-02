@@ -19,7 +19,6 @@ public class VueInfo implements Observateur{
     Label nomChanson;
     @FXML
     Button boutonFenetre;
-    public ListView<String> listeDansInfo;
 
     public VueInfo(Arezzo arezzo, Stage st){
         this.arezzo = arezzo;
