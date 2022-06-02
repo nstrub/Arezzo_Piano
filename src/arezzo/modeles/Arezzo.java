@@ -1,19 +1,12 @@
 package arezzo.modeles;
 
 import arezzo.vues.Observateur;
-import arezzo.vues.VuePartition;
 import com.google.gson.Gson;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
-import com.google.gson.stream.JsonWriter;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.image.Image;
-import netscape.javascript.JSObject;
 import org.json.JSONException;
 import org.json.JSONObject;
-import partition.Melodie;
 import partition.Partition;
 //import gson;
 
@@ -22,6 +15,8 @@ import javax.sound.midi.MidiUnavailableException;
 import javax.sound.midi.Synthesizer;
 import java.io.*;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public class Arezzo {
     private Partition parti;
@@ -252,18 +247,27 @@ public class Arezzo {
         this.importerDonneesChargees(lecture);
     }
     public void importerDonneesChargees(String fichier) throws JSONException {
+        System.out.println(fichier);
         json = new JSONObject(fichier);
         notes = new StringBuilder();
         listeNotes.clear();
         nbNotes = 0;
-        ArrayList<String> arrayCharger = (ArrayList<String>) json.get("ArrayNotes");
-        this.listeNotes = arrayCharger;
         String newTitre = (String) json.get("Titre");
+        String arrayString = String.valueOf(json.get("ArrayNotes"));
+        arrayString = arrayString.replace("[","").replace("]","").replace("\"","");
+        String[] str = arrayString.split(",");
+        List<String> arrayConvert = new ArrayList<String>();
+        arrayConvert = Arrays.asList(str);
+        for (String not: arrayConvert
+             ) {
+            this.setMelodie(not);
+        }
         nom = newTitre;
         this.notifierObservateur();
     }
+
     public void sauvegarder() throws JSONException {
-        json.put("ArrayNotes", listeNotes);
+        json.put("ArrayNotes", listeNotes.toString());
         json.put("Titre", nom);
     }
 

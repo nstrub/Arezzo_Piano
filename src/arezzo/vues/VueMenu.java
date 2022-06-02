@@ -41,7 +41,6 @@ public class VueMenu extends MenuBar {
         System.exit(0);
     }
 
-
     public void nouveau() {
         TextInputDialog popUp = new TextInputDialog("Nouveau morceau");
         popUp.setWidth(400);
@@ -54,56 +53,13 @@ public class VueMenu extends MenuBar {
         arezzo.notifierObservateur();
     }
 
-    /*
-public void ouvrirFichier() {
-    FileChooser fileChooser = new FileChooser();
-    fileChooser.setTitle("Veuillez selectionner un fichier Json");
-    FileChooser.ExtensionFilter filter = new FileChooser.ExtensionFilter("Json", "*.json");
-    fileChooser.getExtensionFilters().add(filter);
-    Stage stage = new Stage();
-    File fichier = fileChooser.showOpenDialog(stage);
-
-    Gson gson = new Gson();
-    Reader reader;
-    Arezzo arezzoTempo = new Arezzo();
-    try {
-        reader = Files.newBufferedReader(Path.of(fichier.getPath()));
-        arezzoTempo = gson.fromJson(reader, Arezzo.class);
-        reader.close();
-    } catch (IOException e) {
-        throw new RuntimeException(e);
-    }
-    arezzo.changerNom(arezzoTempo.getNom());
-    arezzo.setMelodie(arezzoTempo.getNotes().toString());
-}
-
-
-
-    public void sauvegarderFichier(){
-        FileChooser fileChooser = new FileChooser();
-        fileChooser.setTitle("Enregistrer");
-        FileChooser.ExtensionFilter filter = new FileChooser.ExtensionFilter("Json", "*.json");
-        fileChooser.getExtensionFilters().add(filter);
-        Stage stage = new Stage();
-        File fichier = fileChooser.showSaveDialog(stage);
-
-        Gson gson = new Gson();
-        Writer writer;
-        try{
-            writer = Files.newBufferedWriter(Path.of(fichier.getPath()));
-            gson.toJson(arezzo, writer);
-            writer.close();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-    }
- */
     public void ouvrirFichier() throws JSONException {
         JFileChooser fileChooser = new JFileChooser();
         int res = fileChooser.showOpenDialog(null);
         if (res == JFileChooser.APPROVE_OPTION) {
             arezzo.chargerDonnees(fileChooser.getSelectedFile());
         }
+        arezzo.notifierObservateur();
     }
 
     public void sauvegarderFichier() throws JSONException, IOException {
